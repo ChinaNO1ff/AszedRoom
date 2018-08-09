@@ -31,7 +31,6 @@ $(document).ready(function() {
 					number: number
 				},
 				success: function(res) {
-					alert('success');
 					if (res.used) {
 						alert('该号码已被注册');
 					} else {
@@ -39,7 +38,6 @@ $(document).ready(function() {
 							alert('发送验证码失败');
 						} else {
 							alert('发送验证码成功');
-							console.log('cookie: ' + res.code);
 							$.cookie('code', res.code);
 							$('#code').attr('disabled', false);
 							$('#getcode').attr('disabled', true);
@@ -99,7 +97,7 @@ $(document).ready(function() {
 								window.location.href = '/';
 							} else {
 								alert('注册失败');
-								window.location.reload();
+								window.location.href = '/register';
 							}
 						}
 					});
@@ -112,7 +110,7 @@ $(document).ready(function() {
 		}
 	});
 	// 重置
-	$('ret').click(function() {
-		window.location.reload();
+	$('#ret').click(function() {
+		window.location.href = '/register';
 	});
 });

@@ -6,12 +6,14 @@ var Utils = require('../utils/utils');
 /* GET home page. */
 router.get('/', (req, res, next) => {
 	if (req.cookies.userName) {
-		res.render( 'user', { userName: req.cookies.userName } );
+		res.render( 'loginIndex', { userName: req.cookies.userName } );
 	} else {
-		res.render( 'index', { title: 'Aszed chatroom' , userName: '' } );
+		res.render( 'index' );
 	}
 });
+
 router.post('/', (req, res, next) => {
+	console.log(req.body)
 	var md5 = crypto.createHash("md5");
 	var name = req.body.userName;
 	var pwd = md5.update(req.body.userPwd).digest("hex");
@@ -24,13 +26,16 @@ router.post('/', (req, res, next) => {
 				if (docs.userPwd === pwd) {
 					console.log('login success');
 					res.cookie('userName', name, {
-						maxAge: 100000
+						maxAge: 1000000
 					});
+					res.send('ok');
+				} else {
+					res.send('no');
 				}
 			} else {
 				console.log('login failed');
+				res.send('no');
 			}
-			res.redirect('/');
 		}
 	});
 })

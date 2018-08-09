@@ -2,32 +2,46 @@
 <html>
 <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
     <script src="/javascripts/register.js"></script>
 </head>
 <body>
-    <form>
-    	手机号码:<br>
-    	<input type="text" name="phone" id="phone">
-    	<br>
-    	手机验证码:<br>
-    	<input type="text" name="code" id="code" disabled="true">
-    	<button type="button" id="getcode">获取短信验证码</button>
-    	<br>
-		用户名:<br>
-		<input type="text" name="userName" id="name">
-		<br>
-		请设置密码:<br>
-		<input type="password" name="userPwd" id="psd">
-		<br>
-		请确认密码:<br>
-		<input type="password" value="" id="rep">
-		<br><br>
-		<button type="button" id="sub">注册</button>
-		<button type="button" id="ret">重置</button>
-	</form>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>welcome to register</h3>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="phone">手机号码:</label>
+                <input type="text" class="form-control" id="phone" placeholder="请输入手机号码" autocomplete="off">
+            </div>
+            <div class="input-group form-group">
+                <label for="code">手机验证码:</label>
+                <input type="text" class="form-control" id="code" placeholder="请输入收到的验证码" autocomplete="off" disabled="true">
+                <span class="input-group-btn" style="vertical-align: bottom;">
+                    <button type="button" id="getcode" class="btn btn-default">获取短信验证码</button>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="name">用户名:</label>
+                <input type="text" class="form-control" id="name" placeholder="请输入你的用户名" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="psd">请设置密码:</label>
+                <input type="password" class="form-control" id="psd" placeholder="请输入密码" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="rep">请确认密码:</label>
+                <input type="password" class="form-control" id="rep" placeholder="请再次输入密码" autocomplete="off">
+            </div>
+            <button type="button" class="btn btn-default" id="sub">注册</button>
+            <button type="button" class="btn btn-default" id="ret">重置</button>
+        </form>
+    </div>
 </body>
 </html>

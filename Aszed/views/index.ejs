@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+	<title>Aszed chatroom</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel='stylesheet' href='/stylesheets/common.css'/>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <% if ( !userName.length ) { %>
-    	<a href="/register">注册</a>
-		<form action="/" method="POST">
-			用户名:<br>
-			<input type="text" name="userName">
-			<br>
-			密码:<br>
-			<input type="password" name="userPwd">
-			<br><br>
-			<input type="submit" value="登录">
-    	</form>
-	<% } %>
+	<div class="container">
+		<div class="jumbotron">
+			<h3>welcome to Aszed chatroom</h3>
+		</div>
+		<form>
+			<div class="form-group">
+				<label for="userName">用户名：</label>
+				<input type="text" class="form-control" id="userName" placeholder="请输入你的用户名" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<label for="userPwd">密码：</label>
+				<input type="password" class="form-control" id="userPwd" placeholder="请输入密码" autocomplete="off">
+			</div>
+			<button type="button" class="btn btn-default" id="login">登录</button>
+			<button type="button" class="btn btn-default" id="register">注册</button>
+		</form>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$('#login').click(function(){
+				var name = $('#userName').val().trim();
+				var pwd = $('#userPwd').val().trim();
+				if (name !== '' && pwd !== '') {
+					$.post('/', {userName: name, userPwd: pwd}, res => {
+						if (res === 'ok') {
+							alert('登录成功');
+							window.location.href = '/';
+						} else {
+							alert('用户名或密码错误');
+						}
+					});
+				}
+			});
+			$('#register').click(function(){
+				window.location.href = '/register';
+			});
+		});
+	</script>
 </body>
 </html>
