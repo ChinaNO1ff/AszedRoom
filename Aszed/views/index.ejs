@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% if ( !userName.length ) { %>
+    	<a href="/register">注册</a>
+		<form action="/" method="POST">
+			用户名:<br>
+			<input type="text" name="userName">
+			<br>
+			密码:<br>
+			<input type="password" name="userPwd">
+			<br><br>
+			<input type="submit" value="登录">
+    	</form>
+	<% } %>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= userName %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+    <p>Welcome <%= userName %></p>
+    <button id="layout">layout</button>
+    <script>
+    	$(document).ready(function(){
+    		$('#layout').click(function(){
+    			$.cookie('userName', '', { expires: -1 });
+    			window.location.reload();
+    		});
+    	});
+    </script>
+</body>
+</html>

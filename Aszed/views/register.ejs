@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="/javascripts/register.js"></script>
+</head>
+<body>
+    <form>
+    	手机号码:<br>
+    	<input type="text" name="phone" id="phone">
+    	<br>
+    	手机验证码:<br>
+    	<input type="text" name="code" id="code" disabled="true">
+    	<button type="button" id="getcode">获取短信验证码</button>
+    	<br>
+		用户名:<br>
+		<input type="text" name="userName" id="name">
+		<br>
+		请设置密码:<br>
+		<input type="password" name="userPwd" id="psd">
+		<br>
+		请确认密码:<br>
+		<input type="password" value="" id="rep">
+		<br><br>
+		<button type="button" id="sub">注册</button>
+		<button type="button" id="ret">重置</button>
+	</form>
+</body>
+</html>
