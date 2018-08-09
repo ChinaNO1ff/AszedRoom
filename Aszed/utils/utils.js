@@ -3,17 +3,18 @@ const User = require('../models/userModel');
 module.exports = {
 	// query user by userName
 	getOneUserByName ( name ,callback ) {
+		console.log('get user by name');
 		User.findOne({ userName: name }, (err, docs) => {
 			if (err) {
 				return ;
 			} else {
+				console.log('the docs is :' + docs);
 				callback(null, docs);
 			}
 		})
 	},
 	// query user by phone
 	getOneUserByPhone ( phone ,callback ) {
-		console.log('get user by phone');
 		User.findOne({ userPhone: phone }, (err, docs) => {
 			if (err) {
 				return ;
