@@ -22,6 +22,7 @@ $(document).ready(function() {
 	$('#phone').focus();
 	// 获取验证码
 	$('#getcode').on('click', function() {
+		alert(1);
 		var number = $('#phone').val().trim();
 		if (isPhone(number)) {
 			$.ajax({
@@ -38,7 +39,7 @@ $(document).ready(function() {
 							alert('发送验证码失败');
 						} else {
 							alert('发送验证码成功');
-							console.log(res)
+							console.log('cookie: ' + res.code);
 							$.cookie('code', res.code);
 							$('#code').attr('disabled', false);
 							$('#getcode').attr('disabled', true);
