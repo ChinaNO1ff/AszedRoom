@@ -31,14 +31,13 @@ router.post('/', (req, res, next) => {
 // 用户名是否重复
 router.post('/nameused', (req, res, next) => {
 	console.log('someone want to checkName');
-	res.send('no');
-	// Utils.getOneUserByName(req.body.userName, (err, docs) => {
-	// 	if (docs) {
-	// 		res.send('yes');
-	// 	} else {
-	// 		res.send('no');
-	// 	}
-	// });
+	Utils.getOneUserByName(req.body.userName, (err, docs) => {
+		if (docs) {
+			res.send('yes');
+		} else {
+			res.send('no');
+		}
+	});
 })
 // 获取验证码和检查手机号码是否重复
 router.post('/getcode', (req, res, next) => {

@@ -13,6 +13,7 @@ module.exports = {
 	},
 	// query user by phone
 	getOneUserByPhone ( phone ,callback ) {
+		console.log('get user by phone');
 		User.findOne({ userPhone: phone }, (err, docs) => {
 			if (err) {
 				return ;
