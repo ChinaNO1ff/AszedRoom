@@ -40,7 +40,7 @@ router.post('/nameused', (req, res, next) => {
 })
 // 获取验证码和检查手机号码是否重复
 router.post('/getcode', (req, res, next) => {
-
+	console.log('some waht to getcode');
 	var obj = {};
 	var phone = req.body.number;
 	Utils.getOneUserByPhone(phone, (err, docs) => {

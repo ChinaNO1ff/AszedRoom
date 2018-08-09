@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 	$('#phone').focus();
 	// 获取验证码
-	$('#getcode').on('click', function() {
+	$('#getcode').click(function(){
 		var number = $('#phone').val().trim();
 		if (isPhone(number)) {
 			$.ajax({
