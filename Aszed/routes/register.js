@@ -63,6 +63,9 @@ router.post('/getcode', (req, res, next) => {
 				var code = Utils.createRandom();
 				var md5 = crypto.createHash('md5');
 				var md5Code = md5.update(code).digest("hex");
+
+				console.log('the code is : ' + code);
+
 				MSMClient.sendSMS({
 					PhoneNumbers: phone,
 					SignName: '袁伟民',
