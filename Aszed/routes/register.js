@@ -49,6 +49,7 @@ router.post('/getcode', (req, res, next) => {
 		} else {
 			if (docs) {
 				obj.used = true;
+				res.send(obj);
 			} else {
 				obj.used = false;
 
@@ -69,14 +70,13 @@ router.post('/getcode', (req, res, next) => {
 				}).then(doc => {
 					obj.code = md5Code;
 					console.log('send success: ' + doc)
+					res.send(obj);
 				}, err => {
 					obj.code = 'no';
 					console.log('send error: ' + err);
-				}).then(() => {
 					res.send(obj);
 				});
 			}
-			res.send(obj);
 		}
 	});
 });

@@ -38,6 +38,7 @@ $(document).ready(function() {
 							alert('发送验证码失败');
 						} else {
 							alert('发送验证码成功');
+							console.log(res)
 							$.cookie('code', res.code);
 							$('#code').attr('disabled', false);
 							$('#getcode').attr('disabled', true);

@@ -1,4 +1,4 @@
 module.exports = {
-	AccessKeyID: 'xxxxxxxxxx',
-	AccessKeySecret: 'xxxxxxxxxx'
+	AccessKeyID: 'LTAIMWYBfdfqp4mZ',
+	AccessKeySecret: 'N4Y4ucXL8yzQECeIqOhufyixNcORaq'
 }
