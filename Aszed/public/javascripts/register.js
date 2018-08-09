@@ -44,7 +44,6 @@ $(document).ready(function() {
 							$('#code').attr('disabled', false);
 							$('#getcode').attr('disabled', true);
 							setTimeout(function() {
-								// 一分钟后允许点击
 								$('#getcode').attr('disabled', false);
 							}, 60000);
 						}

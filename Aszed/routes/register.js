@@ -30,7 +30,6 @@ router.post('/', (req, res, next) => {
 })
 // 用户名是否重复
 router.post('/nameused', (req, res, next) => {
-	console.log('someone want to checkName');
 	Utils.getOneUserByName(req.body.userName, (err, docs) => {
 		if (docs) {
 			res.send('yes');
@@ -41,7 +40,6 @@ router.post('/nameused', (req, res, next) => {
 })
 // 获取验证码和检查手机号码是否重复
 router.post('/getcode', (req, res, next) => {
-	console.log('some waht to getcode');
 	var obj = {};
 	var phone = req.body.number;
 	Utils.getOneUserByPhone(phone, (err, docs) => {
@@ -64,8 +62,6 @@ router.post('/getcode', (req, res, next) => {
 				var code = Utils.createRandom();
 				var md5 = crypto.createHash('md5');
 				var md5Code = md5.update(code).digest("hex");
-
-				console.log('the code is : ' + code);
 
 				MSMClient.sendSMS({
 					PhoneNumbers: phone,
