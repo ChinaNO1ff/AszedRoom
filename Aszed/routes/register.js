@@ -52,31 +52,31 @@ router.post('/getcode', (req, res, next) => {
 			} else {
 				obj.used = false;
 
-				var code = Utils.createRandom();
-				var md5 = crypto.createHash('md5');
-				var md5Code = md5.update(code).digest("hex");
-				console.log('before md5: ' + code);
-				obj.code = md5Code;
-				res.send(obj);
-
 				// var code = Utils.createRandom();
 				// var md5 = crypto.createHash('md5');
 				// var md5Code = md5.update(code).digest("hex");
+				// console.log('before md5: ' + code);
+				// obj.code = md5Code;
+				// res.send(obj);
 
-				// MSMClient.sendSMS({
-				// 	PhoneNumbers: phone,
-				// 	SignName: '袁伟民',
-				// 	TemplateCode: 'SMS_141597364',
-				// 	TemplateParam: `{"code": ${code}}`
-				// }).then(doc => {
-				// 	obj.code = md5Code;
-				// 	console.log('send success: ' + doc)
-				// 	res.send(obj);
-				// }, err => {
-				// 	obj.code = 'no';
-				// 	console.log('send error: ' + err);
-				// 	res.send(obj);
-				// });
+				var code = Utils.createRandom();
+				var md5 = crypto.createHash('md5');
+				var md5Code = md5.update(code).digest("hex");
+
+				MSMClient.sendSMS({
+					PhoneNumbers: phone,
+					SignName: '袁伟民',
+					TemplateCode: 'SMS_141597364',
+					TemplateParam: `{"code": ${code}}`
+				}).then(doc => {
+					obj.code = md5Code;
+					console.log('send success: ' + doc)
+					res.send(obj);
+				}, err => {
+					obj.code = 'no';
+					console.log('send error: ' + err);
+					res.send(obj);
+				});
 			}
 		}
 	});
