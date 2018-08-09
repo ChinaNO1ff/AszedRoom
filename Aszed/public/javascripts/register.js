@@ -22,7 +22,6 @@ $(document).ready(function() {
 	$('#phone').focus();
 	// 获取验证码
 	$('#getcode').on('click', function() {
-		alert(1);
 		var number = $('#phone').val().trim();
 		if (isPhone(number)) {
 			$.ajax({
@@ -32,6 +31,7 @@ $(document).ready(function() {
 					number: number
 				},
 				success: function(res) {
+					alert('success');
 					if (res.used) {
 						alert('该号码已被注册');
 					} else {
