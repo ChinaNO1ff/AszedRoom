@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>个人中心</title>
+    <%- include('./components/header.ejs') %>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/Chat.js"></script>
+    <script src="/javascripts/client.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>欢迎进入聊天室，<%= userName %></h3>
+            <p>房间号： <%= roomId %></p>
+        </div>
+    </div>
+</body>
+</html>

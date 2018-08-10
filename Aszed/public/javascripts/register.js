@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	function tips(str) {
+		$('#content').html(str);
+		$('#model').modal();
+	}
 	// 验证手机号码合法性
 	function isPhone(str) {
 		var patt = /(13\d|14[579]|15[^4\D]|17[^49\D]|18\d)\d{8}/;
@@ -32,12 +36,12 @@ $(document).ready(function() {
 				},
 				success: function(res) {
 					if (res.used) {
-						alert('该号码已被注册');
+						tips('该号码已被注册');
 					} else {
 						if (res.code === 'no') {
-							alert('发送验证码失败');
+							tips('发送验证码失败');
 						} else {
-							alert('发送验证码成功');
+							tips('发送验证码成功');
 							$.cookie('code', res.code);
 							$('#code').attr('disabled', false);
 							$('#getcode').attr('disabled', true);
@@ -49,13 +53,13 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert('请输入合法的号码');
+			tips('请输入合法的号码');
 		}
 	});
 	// 检查用户名是否重复
 	$('#name').blur(function(){
-		if (getVal($('#name')) === '') {
-			alert('请输入用户名');
+		if (getVal($('#name')).length >= 8) {
+			tips('用户名太长，限制8个字符');
 		} else {
 			$.ajax({
 				type: 'POST',
@@ -65,7 +69,7 @@ $(document).ready(function() {
 				},
 				success: function(res) {
 					if (res === 'yes') {
-						alert('该用户名已被使用');
+						tips('该用户名已被使用');
 					} else {
 						
 					}
@@ -73,10 +77,18 @@ $(document).ready(function() {
 			});
 		}
 	});
+	// 检查密码是否合法
+	$('#psd').blur(function(){
+		if (!isWhite($('#psd'))) {
+			if(getVal($('#psd')).length < 6 || getVal($('#psd')).length >10) {
+				tips('密码长度限制为6到10个字符');
+			}
+		}
+	});
 	// 提交
 	$('#sub').click(function() {
 		if (isWhite($('#phone')) || isWhite($('#name')) || isWhite($('#code')) || isWhite($('#psd')) || isWhite($('#rep'))) {
-			alert('请输入完整的信息');
+			tips('请输入完整的信息');
 		} else {
 			if ($.cookie('code') === md5($('#code').val())) {
 				if (getVal($('#psd')) === getVal($('#rep'))) {
@@ -90,22 +102,22 @@ $(document).ready(function() {
 						},
 						success: function(res) {
 							if (res === 'ok') {
-								alert('注册成功');
+								tips('注册成功');
 								$.cookie('code', '', {
 									expires: -1
 								});
 								window.location.href = '/';
 							} else {
-								alert('注册失败');
+								tips('注册失败');
 								window.location.href = '/register';
 							}
 						}
 					});
 				} else {
-					alert('密码不一致');
+					tips('密码不一致');
 				}
 			} else {
-				alert('验证码错误');
+				tips('验证码错误');
 			}
 		}
 	});

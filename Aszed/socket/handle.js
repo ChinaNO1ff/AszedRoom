@@ -1,11 +1,10 @@
 var io = require('socket.io')();
+var Utils = require('./utils');
 
 io.on('connection', socket => {
-	// console.log('someone come')
-	socket.on('sendUser', res => {
-		console.log(res);
-	})
+	// Utils.msg(socket);
 });
+
 
 module.exports = server => {
 	io.listen(server);

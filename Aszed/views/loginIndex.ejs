@@ -2,19 +2,15 @@
 <html>
 <head>
     <title><%= userName %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/common.css'/>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <%- include('./components/header.ejs') %>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </head>
 <body>
     <div class="container">
         <ul class="breadcrumb">
-            <li role="presentation" class="active"><a href="#">聊天室</a></li>
-            <li role="presentation"><a href="#">个人中心</a></li>
+            <li role="presentation" class="active"><a href="/rooms">聊天室</a></li>
+            <li role="presentation"><a href="/users">个人中心</a></li>
             <li role="presentation" id="layout"><a href="#">退出</a></li>
-            <!-- <span class="pull-right">欢迎您 <%= userName %></span> -->
         </ul>
     </div>
     <script>

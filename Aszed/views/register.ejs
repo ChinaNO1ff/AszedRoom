@@ -2,10 +2,7 @@
 <html>
 <head>
     <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/common.css'/>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <%- include('./components/header.ejs') %>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
     <script src="/javascripts/register.js"></script>
@@ -42,6 +39,9 @@
             <button type="button" class="btn btn-default" id="sub">注册</button>
             <button type="button" class="btn btn-default" id="ret">重置</button>
         </form>
+        
+        <%- include('./components/alert.ejs') %>
+
     </div>
 </body>
 </html>

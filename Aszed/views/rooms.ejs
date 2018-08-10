@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>聊天室列表</title>
+    <%- include('./components/header.ejs') %>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/javascripts/roomlist.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>欢迎进入聊天室，<%= userName %></h3>
+            <button id="create" type="button" class="btn btn-info">创建房间</button>
+        </div>
+        <div class="row" id="list">
+            
+        </div>
+    </div>
+    <%- include('./components/create.ejs') %>
+    <%- include('./components/alert.ejs') %>
+</body>
+</html>

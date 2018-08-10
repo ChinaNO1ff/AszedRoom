@@ -2,6 +2,10 @@ body {
   padding: 40px;
   font-family: 'Courier New';
 }
-.jumbotron h3 {
+.jumbotron {
 	text-align: center;
+}
+.thumbnail > img {
+	height: 200px;
+	overflow: hidden;
 }
