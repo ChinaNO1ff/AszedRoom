@@ -53,6 +53,7 @@ $(function(){
         if (!isWhite($('#roomPwd'))) {
             if (getVal($('#roomPwd')).length <3 || getVal($('#roomPwd')).length >8) {
                 tips('密码限制3到8个字符');
+                $('#roomPwd').val('');
             }
         }
     });
@@ -60,6 +61,7 @@ $(function(){
         if (!isWhite($('#roomPic'))) {
             if (!isUrl(getVal($('#roomPic')))) {
                 tips('图片地址不合法');
+                $('#roomPic').val('');
             }
         }
     });

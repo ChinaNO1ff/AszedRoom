@@ -60,6 +60,7 @@ $(document).ready(function() {
 	$('#name').blur(function(){
 		if (getVal($('#name')).length >= 8) {
 			tips('用户名太长，限制8个字符');
+			$('#name').val('');
 		} else {
 			$.ajax({
 				type: 'POST',
@@ -82,6 +83,7 @@ $(document).ready(function() {
 		if (!isWhite($('#psd'))) {
 			if(getVal($('#psd')).length < 6 || getVal($('#psd')).length >10) {
 				tips('密码长度限制为6到10个字符');
+				$('#psd').val('');
 			}
 		}
 	});

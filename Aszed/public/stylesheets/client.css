@@ -1,0 +1,12 @@
+#title {
+	text-align: center;
+}
+#main {
+	height: 400px;
+	border: 1px solid black;
+	overflow: auto;
+}
+#onlineList {
+	height: 400px;
+	border: 1px solid black;
+}

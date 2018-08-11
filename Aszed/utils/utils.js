@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-const Room = require('../models/RoomModel');
+const Room = require('../models/roomModel');
 
 module.exports = {
 	// query user by userName
@@ -78,5 +78,14 @@ module.exports = {
 				callback(null, docs);
 			}
 		})
+	},
+	updateOnline (old, val, callback) {
+		Room.update(old, val, (err, docs) => {
+			if (err) {
+				callback(null, false);
+			} else {
+				callback(null, true)
+			}
+		});
 	}
 }

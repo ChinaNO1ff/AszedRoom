@@ -3,18 +3,32 @@
 <head>
     <title>个人中心</title>
     <%- include('./components/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/client.css">
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/room.js"></script>
     <script src="/javascripts/Chat.js"></script>
     <script src="/javascripts/client.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h3>欢迎进入聊天室，<%= userName %></h3>
-            <p>房间号： <%= roomId %></p>
+        <h3 id="title">欢迎进入<%= roomTitle %></h3>
+        <div class="row">
+            <ul id="onlineList" class="col-md-2">
+                <p>在线列表</p>
+            </ul>
+            <div id="main"  class="col-md-10">
+                
+            </div>
+            
+        </div>
+        <div class="row">
+            <input type="text" id="input" class="col-md-10">
+            <button id="send" class="col-md-2">发送</button>
         </div>
     </div>
+    <%- include('./components/enter.ejs') %>
+    <%- include('./components/alert.ejs') %>
 </body>
 </html>

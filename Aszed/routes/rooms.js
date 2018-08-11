@@ -12,15 +12,26 @@ router.get('/', (req, res, next) => {
 });
 // 进入指定id的房间
 router.get('/:id', (req, res, next) => {
-	Utils.getRoomById(req.params.id, (err, doc) => {
-		res.cookie('roomPwd', doc.roomPwd, {
-			maxAge: 100000
+	var username = req.cookies.userName;
+	var roomid = req.params.id;
+	if (username) {
+		Utils.getRoomById(roomid, (err, doc) => {
+			if (doc) {
+				res.cookie('roomPwd', doc.roomPwd, {
+					maxAge: 100000000
+				});
+				res.render('chatroom', {
+					roomId: roomid,
+					roomTitle: doc.roomTitle,
+					userName: username
+				});	
+			} else {
+				res.render('error');
+			}
 		});
-		res.render('chatroom', {
-			roomId: req.params.id,
-			userName: req.cookies.userName
-		});
-	});
+	} else {
+		res.render('index');
+	}
 });
 
 // 获取房间列表信息
@@ -42,6 +53,7 @@ router.post('/createroom', (req, res, next) => {
 		Utils.createRoom({
 			roomId: Utils.createId(),
 			roomPwd: pwd,
+			online: [],
 			roomTitle: req.body.roomTitle,
 			created: Date.now()
 		}, (err, doc) => {
