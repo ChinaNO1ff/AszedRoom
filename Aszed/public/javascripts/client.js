@@ -1,9 +1,7 @@
 $(document).ready(function(){
 	var socket = io.connect();
 	var chat = new Chat(socket);
-	var name = '';
 	chat.socket.on('user connect', res => {
-		name = res.username;
 		$('#main').append($(`
 			<h3>${res.username} 加入了聊天室</h3>
 		`));
@@ -20,8 +18,9 @@ $(document).ready(function(){
 	chat.socket.on('message', res => {
 		console.log(res)
 		$('#main').append($(`
-			<p>[${name}]> ${res.message}</p>
+			<p>[${res.username}]> ${res.message}</p>
 		`));
+		chat.goBottom();
 	});
 	$('#send').click(function(){
 		var text = $('#input').val().trim();
@@ -29,5 +28,6 @@ $(document).ready(function(){
 		$('#main').append($(`
 			<p>${text}</p>
 		`));
+		$('#input').val('').focus();
 	});
 });

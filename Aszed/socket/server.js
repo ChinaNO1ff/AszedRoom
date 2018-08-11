@@ -41,7 +41,11 @@ io.on('connection', socket => {
 		// 接收消息并广播到所有客户端
 
 		socket.on('message', res => {
-			socket.to(room.roomid).emit('message', res)
+
+			socket.to(room.roomid).emit('message', {
+				message: res.message,
+				username: room.username
+			})
 		});
 		// io接收者包括自己
 		// socket不包括自己
