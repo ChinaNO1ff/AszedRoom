@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>个人中心</title>
+    <title><%= roomTitle %></title>
     <%- include('./components/header.ejs') %>
     <link rel="stylesheet" type="text/css" href="/stylesheets/client.css">
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -13,19 +13,27 @@
 </head>
 <body>
     <div class="container">
-        <h3 id="title">欢迎进入<%= roomTitle %></h3>
-        <div class="row">
-            <ul id="onlineList" class="col-md-2">
-                <p>在线列表</p>
-            </ul>
-            <div id="main"  class="col-md-10">
-                
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p id="title">欢迎进入<%= roomTitle %></p>
             </div>
-            
-        </div>
-        <div class="row">
-            <input type="text" id="input" class="col-md-10">
-            <button id="send" class="col-md-2">发送</button>
+        
+            <div class="panel-body">
+                <div id="main" class="col-md-9 col-xs-12 list-group">
+                    
+                </div>
+                <ul id="onlineList" class="col-md-3 hidden-xs list-group">
+
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="输入你想发送的消息" id="input">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="send">发送</button>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
     <%- include('./components/enter.ejs') %>

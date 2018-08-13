@@ -3,9 +3,29 @@
 }
 #main {
 	height: 400px;
-	border: 1px solid black;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+	word-break: break-all;
+	word-wrap:break-word;
 }
 #onlineList {
-	border: 1px solid black;
+	max-height: 400px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#onlineList > li {
+	
+}
+
+#main .tip{
+	color: red;
+	font-size: 16px;
+}
+
+#main .received {
+	color: #000;
+}
+
+#main .send {
+	text-align: right;
 }

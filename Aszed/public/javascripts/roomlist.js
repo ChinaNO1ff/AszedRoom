@@ -30,7 +30,7 @@ $(function(){
             $(res).each(function(index, item){
                 var str = `
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <a href="/rooms/${item.roomId}" class="thumbnail btn">
+                        <a href="/rooms/${item.roomId}" target="_black" class="thumbnail btn">
                             <img src="${item.roomPic}">
                             <div class="caption">
                                 <p>标题：${item.roomTitle}</p>

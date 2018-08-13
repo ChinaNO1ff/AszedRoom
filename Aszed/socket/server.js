@@ -32,7 +32,7 @@ io.on('connection', socket => {
 				}
 				arr.push(room.username);
 				room.online = arr;
-
+				room.time = Date.now();
 				io.to(room.roomid).emit('user connect', room);
 				Utils.updateOnline({roomId: room.roomid}, {online: room.online}, ()=>{});
 			}
@@ -44,7 +44,8 @@ io.on('connection', socket => {
 
 			socket.to(room.roomid).emit('message', {
 				message: res.message,
-				username: room.username
+				username: room.username,
+				time: Date.now()
 			})
 		});
 		// io接收者包括自己
@@ -61,6 +62,7 @@ io.on('connection', socket => {
 						}
 					}
 					room.online = arr;
+					room.time = Date.now();
 					io.to(room.roomid).emit('user leave', room);
 					Utils.updateOnline({roomId: room.roomid}, {online: room.online}, ()=>{});
 				}
