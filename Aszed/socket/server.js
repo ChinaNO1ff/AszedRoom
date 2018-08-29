@@ -1,7 +1,7 @@
 var querystring = require('querystring');
 var Utils = require('../utils/utils');
-var io = require('socket.io')();
-	
+
+
 function getName(str) {
 	var cookie = querystring.parse(str.replace(/\s|\xA0/g,""), ";");
 	return cookie.userName;
@@ -41,7 +41,6 @@ io.on('connection', socket => {
 		// 接收消息并广播到所有客户端
 
 		socket.on('message', res => {
-
 			socket.to(room.roomid).emit('message', {
 				message: res.message,
 				username: room.username,
